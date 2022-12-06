@@ -71,18 +71,19 @@ public class SelectMultipleCase extends Base {
 		}
 
 	}
+
 	@Test
 	public void selectAll() {
-		WebElement getSelctAllButton,actualMessg;
+		WebElement getSelctAllButton, actualMessg;
 		boolean isMultipleFlag;
-		String  actualMessage,expectedMessg="All selected colors are : Red,Yellow,Green";
+		String actualMessage, expectedMessg = "All selected colors are : Red,Yellow,Green";
 		driver.navigate().to("https://selenium.obsqurazone.com/select-input.php");
 		Select obj5 = new Select(driver.findElement(By.xpath("//select[@id='multi-select-field']")));
-		isMultipleFlag=obj5.isMultiple();
+		isMultipleFlag = obj5.isMultiple();
 		Assert.assertTrue(isMultipleFlag, "Multiple option not selected");
 		getSelctAllButton = driver.findElement(By.id("button-all"));
-		actualMessg=driver.findElement(By.id("message-two"));
-		if(isMultipleFlag) {
+		actualMessg = driver.findElement(By.id("message-two"));
+		if (isMultipleFlag) {
 			obj5.selectByVisibleText("Red");
 			obj5.selectByVisibleText("Yellow");
 			obj5.selectByVisibleText("Green");
@@ -90,26 +91,27 @@ public class SelectMultipleCase extends Base {
 			getSelctAllButton.click();
 			actualMessage = actualMessg.getText();
 			Assert.assertEquals(expectedMessg, actualMessage, "Selected colours text are not same");
-			obj5.deselectAll();		
-			}
-		
+			obj5.deselectAll();
+		}
+
 	}
+
 	@Test
 	public void deselectAll() {
-		WebElement deslctActualMessg;
+		WebElement getSelctAllButton;
 		boolean isMultipleFlag;
-		String deselectActual,deslctExpMessg="All selected colors are : ";
-		deslctActualMessg=driver.findElement(By.id("message-two"));
 		driver.navigate().to("https://selenium.obsqurazone.com/select-input.php");
-		Select obj6 = new Select(driver.findElement(By.xpath("//select[@id='multi-select-field']")));
-		isMultipleFlag=obj6.isMultiple();
-		obj6.selectByVisibleText("Red");
-		obj6.selectByVisibleText("Yellow");
-		obj6.selectByVisibleText("Green");
-		obj6.deselectAll();
-		deselectActual=deslctActualMessg.getText();
-		Assert.assertEquals(deselectActual, deslctExpMessg, "messages are not same");
-		
+		Select obj5 = new Select(driver.findElement(By.xpath("//select[@id='multi-select-field']")));
+		isMultipleFlag = obj5.isMultiple();
+		Assert.assertTrue(isMultipleFlag, "Multiple option not selected");
+		getSelctAllButton = driver.findElement(By.id("button-all"));
+		obj5.selectByVisibleText("Red");
+		obj5.selectByVisibleText("Yellow");
+		obj5.selectByVisibleText("Green");
+		obj5.getAllSelectedOptions();
+		getSelctAllButton.click();
+		obj5.deselectAll();
+		Assert.assertTrue(isMultipleFlag, "Fields are not deselected");
 	}
 
 }
