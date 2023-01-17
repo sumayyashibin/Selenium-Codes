@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<parameter name="inputData" value="Apple"></parameter>
+<!-- <test name = "Parallel Tests" parallel = "methods" thread-count = "2">-->
+
+	<test thread-count="5" name="Test">
+	<groups>  
+	<run>  
+	<include name="SmokeTest"/>  
+	</run>  
+	</groups>
+		<classes>
+		<class name="com.obsqura.SeleniumTestNG.DownloadFiles" >
+		<!-- <methods>
+		<include name="uploadUsingAutoit" />
+		</methods>-->
+		</class>
+		<!-- <class name="com.obsqura.SeleniumTestNG.Annotations" /> !-->
+		<!-- <class name="com.obsqura.SeleniumTestNG.Sum" /> !-->
+			<!-- 
+			<class name="com.obsqura.SeleniumTestNG.AmazonUrl" />
+			<methods>
+				<include name="softAssertSample" />
+				<exclude name="hardAssertSample" />
+			</methods>
+			</class> !-->
+		</classes>
+
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
